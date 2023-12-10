@@ -53,6 +53,27 @@ let name = "Reylee";
 
     # Always color ls and group directories
     alias ls='ls --color=auto'
+
+    # my own stuff
+    eval "$(fnm env --use-on-cd)"
+
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/contents/home
+    export PATH="/opt/local/libexec/gnubin:/opt/local/bin:$PATH"
+    export PATH="/Users/reylee/Library/Python/3.9/bin:$PATH"
+
+    if command -v pyenv 1>/dev/null 2>&1; then
+      eval "$(pyenv init -)"
+    fi
+    eval "$(atuin init zsh)"
+    eval "$(zoxide init zsh)"
+
+    # bun completions
+    [ -s "/Users/reylee/.bun/_bun" ] && source "/Users/reylee/.bun/_bun"
+
+    # bun
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    alias lg=lazygit
   '';
 
   git = {
@@ -254,6 +275,7 @@ let name = "Reylee";
 
     extraConfig = lib.mkMerge [
       ''
+        Include ~/.orbstack/ssh/config
         Host github.com
           Hostname github.com
           IdentitiesOnly yes
