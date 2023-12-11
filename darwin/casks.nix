@@ -9,14 +9,10 @@
   "telegram"
 
   # Utility Tools
-  "lazygit"
-  "atuin"
 
   # Entertainment Tools
 
   # Productivity Tools
-  "yabai"
-  "skhd"
 
   # Browsers
 
