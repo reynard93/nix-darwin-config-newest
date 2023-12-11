@@ -49,12 +49,16 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-cask-fonts = {
+      url = "github:homebrew/cask-fonts";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko } @inputs:
     let
       user = "reylee";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -91,6 +95,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "homebrew/cask-fonts" = homebrew-cask-fonts;
                 };
                 mutableTaps = false;
                 autoMigrate = true;

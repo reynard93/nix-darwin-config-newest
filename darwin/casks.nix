@@ -1,6 +1,7 @@
 {}:
 
 [
+  "font-caskaydia-cove-nerd-font"
   # Development Tools
 
   # Communication Tools
