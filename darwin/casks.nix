@@ -1,7 +1,9 @@
 {}:
 
 [
-  "font-caskaydia-cove-nerd-font"
+  # Fonts
+  "font-caskaydia-cove-nerd-font" # for my sketchybar
+
   # Development Tools
 
   # Communication Tools

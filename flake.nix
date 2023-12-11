@@ -50,7 +50,7 @@
       flake = false;
     };
     homebrew-cask-fonts = {
-      url = "github:homebrew/cask-fonts";
+      url = "github:homebrew/homebrew-cask-fonts";
       flake = false;
     };
     disko = {
