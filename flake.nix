@@ -95,7 +95,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "homebrew/cask-fonts" = homebrew-cask-fonts;
+                  "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
                 };
                 mutableTaps = false;
                 autoMigrate = true;
