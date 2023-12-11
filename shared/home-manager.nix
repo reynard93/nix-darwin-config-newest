@@ -84,6 +84,17 @@ let name = "Reylee";
     lfs = {
       enable = true;
     };
+    aliases = {
+     aco = add -A && commit -m
+     a = "!git add ."
+     d = diff
+     co = checkout
+     ci = commit
+     ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+     pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+     st = status
+     br = branch
+    };
     extraConfig = {
       init.defaultBranch = "main";
       core = { 
