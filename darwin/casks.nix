@@ -2,6 +2,7 @@
 
 [
   # Development Tools
+  "neovim"
 
   # Communication Tools
   "discord"
@@ -9,10 +10,14 @@
   "telegram"
 
   # Utility Tools
+  "lazygit"
+  "atuin"
 
   # Entertainment Tools
 
   # Productivity Tools
+  "yabai"
+  "skhd"
 
   # Browsers
 
