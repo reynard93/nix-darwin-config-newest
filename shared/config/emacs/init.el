@@ -111,6 +111,7 @@
 ;; Load Org Config or Default
 ;; -------------------------
 (unless (file-exists-p org-config-file)
+  (message "Downloading default config from %s" default-config-url)
   (dl/download-default-config))
 (if (file-exists-p org-config-file)
     (org-babel-load-file org-config-file)
