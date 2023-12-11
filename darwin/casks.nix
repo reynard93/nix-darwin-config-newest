@@ -2,7 +2,6 @@
 
 [
   # Development Tools
-  "neovim"
 
   # Communication Tools
   "discord"

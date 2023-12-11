@@ -9,6 +9,14 @@ let
   '';
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
+  koekeishiya_formulae = {
+    url = "github:koekeishiya/homebrew-formulae";
+    flake = false;
+  };
+  FelixKratz_formulae = {
+    url = "github:FelixKratz/homebrew-formulae";
+    flake = false;
+  };
 in
 {
   imports = [
@@ -24,6 +32,11 @@ in
   };
 
   homebrew.enable = true;
+
+  homebrew.taps = [
+    "koekeishiya/formulae" # yabai and skhd
+    "FelixKratz/formulae" # sketchybar
+  ];
   homebrew.casks = pkgs.callPackage ./casks.nix {};
 
   # These app IDs are from using the mas CLI app
