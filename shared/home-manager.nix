@@ -224,7 +224,7 @@ let name = "Reylee";
       };
 
       window = {
-        opacity = 1.0;
+        opacity = 0.86;
         padding = {
           x = 24;
           y = 24;
