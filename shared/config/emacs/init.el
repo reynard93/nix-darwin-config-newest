@@ -86,7 +86,6 @@
   (setq evil-auto-indent nil))
 
 (use-package org
-  :defer t
   :hook (org-mode . dl/org-mode-setup)
   :config
   (setq org-edit-src-content-indentation 2
