@@ -48,13 +48,21 @@
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
       flake = false;
-    }; 
+    };
+    koekeishiya_formulae = {
+      url = "github:koekeishiya/homebrew-formulae";
+      flake = false;
+    };
+   FelixKratz_formulae = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, koekeishiya_formulae, FelixKratz_formulae, home-manager, nixpkgs, disko } @inputs:
     let
       user = "reylee";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -90,7 +98,9 @@
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle; 
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "koekeishiya/formulae" = koekeishiya_formulae; # yabai and skhd
+                  "FelixKratz/formulae" = FelixKratz_formulae; # sketchybar
                 };
                 mutableTaps = false;
                 autoMigrate = true;
