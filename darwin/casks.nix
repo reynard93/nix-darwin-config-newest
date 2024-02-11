@@ -8,7 +8,6 @@
 
   # Communication Tools
   "discord"
-  "loom"
   "telegram"
 
   # Utility Tools
@@ -20,5 +19,5 @@
   # Browsers
 
   # AI
-  "diffusionbee"
+
 ]

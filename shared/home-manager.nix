@@ -73,7 +73,9 @@ let name = "Reylee";
     # bun
     export BUN_INSTALL="$HOME/.bun"
     export PATH="$BUN_INSTALL/bin:$PATH"
+
     alias lg=lazygit
+    zellij setup --generate-auto-start bash
   '';
 
   git = {
