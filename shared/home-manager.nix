@@ -75,7 +75,6 @@ let name = "Reylee";
     export PATH="$BUN_INSTALL/bin:$PATH"
 
     alias lg=lazygit
-    zellij setup --generate-auto-start bash
   '';
 
   git = {
