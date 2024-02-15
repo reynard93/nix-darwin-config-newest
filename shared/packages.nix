@@ -3,7 +3,6 @@
 with pkgs; [
   # General packages for development and system management
   act
-  alacritty
   aspell
   aspellDicts.en
   bash-completion
@@ -18,13 +17,8 @@ with pkgs; [
   wget
   zip
 
-  # Encryption and security tools
-  age
-  age-plugin-yubikey
+  # Encryption and security 
   gnupg
-  libfido2
-  pinentry
-  yubikey-manager
 
   # Cloud-related tools and SDKs
   #
@@ -35,13 +29,9 @@ with pkgs; [
   # docker-compose
   #
   awscli2
-  flyctl
-  ngrok
-  tflint
 
   # Media-related packages
   emacs-all-the-icons-fonts
-  dejavu_fonts
   ffmpeg
   fd
   font-awesome
@@ -72,4 +62,7 @@ with pkgs; [
   # Python packages
   python39
   python39Packages.virtualenv # globally install virtualenv
+
+  # Emacs
+  emacs-lsp-booster
 ]
