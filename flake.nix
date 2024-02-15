@@ -3,13 +3,7 @@
   description = "Starter Configuration for NixOS and MacOS";
 
   inputs = {
-    nixpkgs.url = "github:dustinlyons/nixpkgs/master";
-    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
-    # sys application(s)
-    ragenix = {
-      url = "github.coim/yaxitech/ragenix";
-      input.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:dustinlyons/nixpkgs/master"; 
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
