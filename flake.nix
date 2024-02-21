@@ -45,6 +45,7 @@
           nativeBuildInputs = with pkgs; [ bashInteractive git age age-plugin-yubikey rustup ];
           shellHook = with pkgs; ''
             export EDITOR=vim
+            export PATH=$PATH:''${CARGO_HOME:-~/.cargo}/bin
           '';
         };
       };
