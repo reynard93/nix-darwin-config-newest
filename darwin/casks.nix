@@ -5,7 +5,6 @@
   "font-caskaydia-cove-nerd-font" # for my sketchybar
 
   # Development Tools
-  "enchant" # for jinx emacs spellchecker
 
   # Communication Tools
   "discord"

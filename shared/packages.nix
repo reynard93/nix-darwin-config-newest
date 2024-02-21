@@ -3,6 +3,7 @@
 with pkgs; [
   # General packages for development and system management
   act
+  enchant
   aspell
   aspellDicts.en
   bash-completion
