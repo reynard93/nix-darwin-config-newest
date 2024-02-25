@@ -16,6 +16,7 @@
   # Entertainment Tools
 
   # Productivity Tools
+  "raycast"
 
   # Browsers
 
