@@ -33,17 +33,16 @@
   outputs = { self, darwin, rust-overlay, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko, ... } @inputs:
     let
       user = "reylee";
-      pkgs = import nixpkgs {
-         overlays = [rust-overlay.overlays.default];
-      };
-      toolchain = pkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
+      toolchain = nixpkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" ];
       forAllLinuxSystems = f: nixpkgs.lib.genAttrs linuxSystems (system: f system);
       forAllDarwinSystems = f: nixpkgs.lib.genAttrs darwinSystems (system: f system);
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) (system: f system);
       devShell = system: let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${system} {
+          overlays = [rust-overlay.overlays.default];
+        };
       in
       {
         default = with pkgs; mkShell {
