@@ -54,7 +54,7 @@
             pkgs.rust-analyzer-unwrapped
           ];
           nativeBuildInputs = with pkgs; [ bashInteractive git age age-plugin-yubikey rustup ];
-          RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library"
+          RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
           shellHook = with pkgs; ''
             export EDITOR=vim
             export PATH=$PATH:''${CARGO_HOME:-~/.cargo}/bin
