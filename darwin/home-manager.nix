@@ -4,7 +4,7 @@ let
   user = "reylee";
   # Define the content of your file as a derivation
   myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
+    #!/bin/zsh
     emacsclient -c -n &
   '';
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
