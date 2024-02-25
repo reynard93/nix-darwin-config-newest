@@ -9,6 +9,7 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay.url = "github:oxalica/rust-overlay";
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
@@ -32,6 +33,11 @@
   outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko, ... } @inputs:
     let
       user = "reylee";
+      pkgs = import nixpkgs {
+         inherit system;
+         overlays = [rust-overlay.overlays.default];
+      };
+      toolchain = pkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" ];
       forAllLinuxSystems = f: nixpkgs.lib.genAttrs linuxSystems (system: f system);
@@ -42,7 +48,13 @@
       in
       {
         default = with pkgs; mkShell {
+          packages = [
+            toolchain
+            # we want the unwrapped ver, "rust-analyzer" (wrapped) comes with nixpkgs' toolchain
+            pkgs.rust-analyzer-unwrapped
+          ];
           nativeBuildInputs = with pkgs; [ bashInteractive git age age-plugin-yubikey rustup ];
+          RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library"
           shellHook = with pkgs; ''
             export EDITOR=vim
             export PATH=$PATH:''${CARGO_HOME:-~/.cargo}/bin
