@@ -34,7 +34,6 @@
     let
       user = "reylee";
       pkgs = import nixpkgs {
-         inherit system;
          overlays = [rust-overlay.overlays.default];
       };
       toolchain = pkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
