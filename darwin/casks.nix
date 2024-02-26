@@ -6,6 +6,7 @@
   "font-victor-mono-nerd-font" # for my emacs fontaine config
 
   # Development Tools
+  "rustup"
 
   # Communication Tools
   "discord"
