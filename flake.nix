@@ -9,7 +9,6 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay.url = "github:oxalica/rust-overlay";
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
@@ -30,38 +29,8 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, rust-overlay, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko, ... } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko, ... } @inputs:
     let
-      user = "reylee";
-      toolchain = nixpkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
-      linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
-      darwinSystems = [ "aarch64-darwin" ];
-      forAllLinuxSystems = f: nixpkgs.lib.genAttrs linuxSystems (system: f system);
-      forAllDarwinSystems = f: nixpkgs.lib.genAttrs darwinSystems (system: f system);
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) (system: f system);
-      devShell = system: let
-        pkgs = nixpkgs.legacyPackages.${system} {
-          overlays = [rust-overlay.overlays.default];
-        };
-      in
-      {
-        default = with pkgs; mkShell {
-          packages = [
-            toolchain
-            # we want the unwrapped ver, "rust-analyzer" (wrapped) comes with nixpkgs' toolchain
-            pkgs.rust-analyzer-unwrapped
-          ];
-          nativeBuildInputs = with pkgs; [ bashInteractive git age age-plugin-yubikey rustup ];
-          RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
-          shellHook = with pkgs; ''
-            export EDITOR=vim
-            export PATH=$PATH:''${CARGO_HOME:-~/.cargo}/bin
-          '';
-        };
-      };
-    in
-    {
-      devShells = forAllSystems devShell;
       darwinConfigurations = let user = "reylee"; in {
         macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -88,4 +57,3 @@
         };
       };
   };
-}
