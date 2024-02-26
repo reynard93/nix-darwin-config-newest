@@ -29,31 +29,35 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs, disko, ... } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs,  ... } @inputs:
     let
-      darwinConfigurations = let user = "reylee"; in {
-        macos = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = inputs;
-          modules = [
-            nix-homebrew.darwinModules.nix-homebrew
-            home-manager.darwinModules.home-manager
-            {
-              nix-homebrew = {
-                enable = true;
-                user = "${user}";
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
-                };
-                mutableTaps = false;
-                autoMigrate = true;
-              };
-            }
-            ./darwin
-          ];
+      user = "reylee";
+      system = "aarch64-darwin";
+      in {
+        darwinConfigurations = {
+            macos = darwin.lib.darwinSystem {
+                inherit system;
+                specialArgs = inputs;
+                modules = [
+                    nix-homebrew.darwinModules.nix-homebrew
+                    home-manager.darwinModules.home-manager
+                    {
+                    nix-homebrew = {
+                        enable = true;
+                        user = "${user}";
+                        taps = {
+                        "homebrew/homebrew-core" = homebrew-core;
+                        "homebrew/homebrew-cask" = homebrew-cask;
+                        "homebrew/homebrew-bundle" = homebrew-bundle;
+                        "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
+                        };
+                        mutableTaps = false;
+                        autoMigrate = true;
+                    };
+                    }
+                    ./darwin
+                ];
+            };
         };
-      }
-  };
+     };
+  }
