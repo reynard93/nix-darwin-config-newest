@@ -30,9 +30,7 @@ let name = "Reylee";
     export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
     export PATH=$HOME/.local/share/bin:$PATH
     export PNPM_HOME=~/.pnpm-packages
-    export CARGO_HOME=$HOME/.cargo # was manually installed with brew
-    export RUSTUP_HOME=HOME/.rustup # think no need but no harm
-    export PATH=$CARGO_HOME:$RUSTUP_HOME:$PATH
+    export PATH=$HOME/.cargo/bin:$PATH 
 
     # Remove history data we don't want to see
     export HISTIGNORE="pwd:ls:cd"
