@@ -37,7 +37,6 @@ let user = "reylee"; in
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
     emacs-macport
-    nixd
   ] ++ (import ../shared/packages.nix { inherit pkgs; });
 
   # Enable fonts dir

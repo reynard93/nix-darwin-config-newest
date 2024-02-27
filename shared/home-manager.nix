@@ -100,7 +100,6 @@ let name = "Reylee";
     extraConfig = {
       init.defaultBranch = "main";
       core = { 
-	    editor = "vim";
         autocrlf = "input";
       };
       pull.rebase = true;
