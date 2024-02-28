@@ -80,7 +80,8 @@ in
                   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/system-appearance.patch";
                   sha256 = "14ndp2fqqc95s70fwhpxq58y8qqj4gzvvffp77snm2xk76c1bvnn";
                 })
-          }
+              ]
+          };
         };
       } // import ../shared/home-manager.nix { inherit config pkgs lib; };
 
