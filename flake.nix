@@ -31,7 +31,7 @@
   };
   outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-cask-fonts, home-manager, nixpkgs,  ... } @inputs:
     let
-      user = "reylee";
+      user = "reynardtw";
       system = "aarch64-darwin";
       in {
         darwinConfigurations = {
