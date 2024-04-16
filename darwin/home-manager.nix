@@ -24,8 +24,21 @@ in
   };
 
   homebrew.enable = true;
+  homebrew.onActivation.autoUpdate = true;
+  homebrew.onActivation.cleanup = "zap"; # ununinstall removes manual brews and casks
 
   homebrew.casks = pkgs.callPackage ./casks.nix {};
+  homebrew.brews = pkgs.callPackage ./brews.nix {};
+  homebrew.taps = [
+      "homebrew/bundle"
+      "homebrew/cask"
+      "homebrew/cask-versions"
+      "homebrew/cask-drivers"
+      "homebrew/core"
+      "homebrew/services"
+      "koekeishiya/formulae"
+      "FelixKratz/formulae"
+  ];
 
   # These app IDs are from using the mas CLI app
   # mas = mac app store
@@ -67,16 +80,6 @@ in
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
   local.dock.entries = [
-#    { path = "/Applications/Slack.app/"; }
-#    { path = "/System/Applications/Messages.app/"; }
-#    { path = "/System/Applications/Facetime.app/"; }
-#    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-#    { path = "/System/Applications/Music.app/"; }
-#    { path = "/System/Applications/News.app/"; }
-#    { path = "/System/Applications/Photos.app/"; }
-#    { path = "/System/Applications/Photo Booth.app/"; }
-#    { path = "/System/Applications/TV.app/"; }
-#    { path = "/System/Applications/Home.app/"; }
     {
       path = toString myEmacsLauncher;
       section = "others";
