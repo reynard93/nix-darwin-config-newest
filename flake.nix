@@ -16,6 +16,7 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    # optional: Declarative tap mgmt
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -41,20 +42,6 @@
                 modules = [
                     nix-homebrew.darwinModules.nix-homebrew
                     home-manager.darwinModules.home-manager
-                    {
-                    nix-homebrew = {
-                        enable = true;
-                        user = "${user}";
-                        taps = {
-                        "homebrew/homebrew-core" = homebrew-core;
-                        "homebrew/homebrew-cask" = homebrew-cask;
-                        "homebrew/homebrew-bundle" = homebrew-bundle;
-                        "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
-                        };
-                        mutableTaps = false;
-                        autoMigrate = true;
-                    };
-                    }
                     ./darwin
                 ];
             };

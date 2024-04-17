@@ -42,10 +42,6 @@ with pkgs; [
   meslo-lgs-nf
 
   # Node.js development tools
-  nodePackages.nodemon
-  nodePackages.prettier
-  nodePackages.npm # globally install npm
-  nodejs
 
   # Text and terminal utilities
   htop

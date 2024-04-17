@@ -23,35 +23,30 @@ in
     shell = pkgs.zsh;
   };
 
-  homebrew.enable = true;
-  homebrew.onActivation.autoUpdate = true;
-  homebrew.onActivation.cleanup = "zap"; # ununinstall removes manual brews and casks
+  homebrew = {
+	  enable = true;
+	  onActivation.autoUpdate = true;
+	  onActivation.cleanup = "zap"; # ununinstall removes manual brews and casks
 
-  homebrew.casks = pkgs.callPackage ./casks.nix {};
-  homebrew.brews = pkgs.callPackage ./brews.nix {};
-  homebrew.taps = [
-      "homebrew/bundle"
-      "homebrew/cask"
-      "homebrew/cask-versions"
-      "homebrew/cask-drivers"
-      "homebrew/core"
-      "homebrew/services"
-      "koekeishiya/formulae"
-      "FelixKratz/formulae"
-  ];
+	  casks = pkgs.callPackage ./casks.nix {};
+	  brews = pkgs.callPackage ./brews.nix {};
+	  taps = [
+	      "koekeishiya/formulae"
+	      "FelixKratz/formulae"
+	  ];
 
-  # These app IDs are from using the mas CLI app
-  # mas = mac app store
-  # https://github.com/mas-cli/mas
-  #
-  # $ nix shell nixpkgs#mas
-  # $ mas search <app name>
-  #
-  homebrew.masApps = {
-#    "1password" = 1333542190;
-#    "wireguard" = 1451685025;
+	  # These app IDs are from using the mas CLI app
+	  # mas = mac app store
+	  # https://github.com/mas-cli/mas
+	  #
+	  # $ nix shell nixpkgs#mas
+	  # $ mas search <app name>
+	  #
+	  masApps = {
+	#    "1password" = 1333542190;
+	#    "wireguard" = 1451685025;
+	  };
   };
-
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;

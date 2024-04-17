@@ -5,15 +5,13 @@
   "lazygit"
   "atuin"
   "zoxide"
-  "fd"
   "ripgrep"
   "fzf"
   "atuin"
   "git-delta"
   "skhd"
   "yabai"
-  "lf
-  "exa"
+  "lf"
   
   # ESG brew
   "direnv"
